@@ -1,0 +1,45 @@
+body {
+    background-image: url(../imgs/bg.jpg);
+    background-repeat: no-repeat;
+    margin-inline: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+nav img {
+        height: 60px;
+}
+nav {
+    margin-bottom: 100px;
+}
+h1 {
+    font-size: 6rem;
+    color: white;
+    font-weight: 300;
+}
+h3 {
+    color: #c2128d;
+    font-size: 3rem;
+    margin: 0px
+}
+p {
+    color: white;
+    font-size: 1.2rem;
+}
+ul li {
+    color: white;
+    font-size: 1.2rem;
+}
+ul {
+    margin-top: 53px;
+    margin-bottom: 66px;
+}
+
+.validation span {
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 900;
+
+}
+
+.NextPage:disabled {
+
+}
