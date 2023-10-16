@@ -1,11 +1,13 @@
 body {
     background-image: url(../imgs/bg.jpg);
-    
+    color:white;
     margin-inline: 80px;
     font-family: Arial, Helvetica, sans-serif;
     background-size: cover;
     
 }
+
+/* NAV STYLE  */
 nav img {
         height: 50px;
 }
@@ -13,10 +15,11 @@ nav {
     margin-bottom: 100px;
     margin-top: 60px;
 }
+
 h1 {
     font-size: 6rem;
-    color: white;
-    font-weight: 250;
+    font-weight: 100;
+    line-height: 5rem;
 }
 h1 span {
     font-weight: 780;
@@ -27,38 +30,48 @@ h3 {
     margin: 0px;
 }
 p {
-    color: white;
-    font-size: 1.2rem;
+    
+    font-size: 1.5rem;
 }
 ul li {
-    color: white;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 ul {
     margin-top: 53px;
     margin-bottom: 66px;
 }
 
-.validation span {
-    font-size: 0.9rem;
-    color: white;
-    font-weight: 900;
+#checkLabel {
+    font-size: 1rem;
+    font-weight: 600;
 
+   
 }
 
-button {
+/* CHECKBOX STYLE  */
+#Confirmation {
+
+    cursor: pointer;
+    width: 30PX;
+    height: 30px;
+}
+
+/* BUTTON STYLE  */
+#NextPage {
     float: right;
     color: #0b113b;
     background-color: #00ffff;
     padding-inline: 60px;
     padding-block: 15px;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 600;
-    border-color: none;
-    
-
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 0px #00ffff
 }
-button:disabled {
+#NextPage:disabled {
     background-color: rgba(255, 255, 255, 0.1);
     color: black;
+    cursor: not-allowed;
+    box-shadow: 0px 0px 20px 0px transparent;
 }
