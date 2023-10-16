@@ -1,9 +1,10 @@
 body {
     background-image: url(../imgs/bg.jpg);
-    background-repeat: no-repeat;
+    
     margin-inline: 80px;
     font-family: Arial, Helvetica, sans-serif;
-    object-fit: cover;
+    background-size: cover;
+    
 }
 nav img {
         height: 50px;
@@ -45,6 +46,19 @@ ul {
 
 }
 
-.NextPage:disabled {
-    color: white;
+button {
+    float: right;
+    color: #0b113b;
+    background-color: #00ffff;
+    padding-inline: 60px;
+    padding-block: 15px;
+    font-size: 2rem;
+    font-weight: 600;
+    border-color: none;
+    
+
+}
+button:disabled {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: black;
 }
