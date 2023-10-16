@@ -6,14 +6,16 @@ body {
     background-size: cover;
     
 }
-
+h1, h3 {
+    font-family: 'Outfit', sans-serif;
+}
 /* NAV STYLE  */
 nav img {
         height: 50px;
 }
 nav {
     margin-bottom: 100px;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 h1 {
@@ -35,26 +37,33 @@ p {
 }
 ul li {
     font-size: 1.5rem;
+    line-height: 2.5rem;
 }
 ul {
     margin-top: 53px;
     margin-bottom: 66px;
 }
 
+.boldText {
+    font-weight: 600;
+}
+
+
+/* CHECKBOX & LABEL   */
 #checkLabel {
     font-size: 1rem;
     font-weight: 600;
-
-   
-}
-
-/* CHECKBOX STYLE  */
-#Confirmation {
-
+    letter-spacing: .8px;
     cursor: pointer;
-    width: 30PX;
-    height: 30px;
+    user-select: none; /* Il testo non verrà evidenziato con il mouse */
 }
+#Confirmation {
+    
+    cursor: pointer;
+    width: 23PX;
+    height: 23px;
+}
+
 
 /* BUTTON STYLE  */
 #NextPage {
@@ -62,12 +71,13 @@ ul {
     color: #0b113b;
     background-color: #00ffff;
     padding-inline: 60px;
-    padding-block: 15px;
-    font-size: 3rem;
-    font-weight: 600;
+    padding-block: 21px;
+    font-size: 1.7rem;
+    font-weight: 800;
     border: none;
     cursor: pointer;
-    box-shadow: 0px 0px 20px 0px #00ffff
+    box-shadow: 0px 0px 20px 0px #00ffff;
+    
 }
 #NextPage:disabled {
     background-color: rgba(255, 255, 255, 0.1);
