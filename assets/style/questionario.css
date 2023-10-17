@@ -1,0 +1,77 @@
+body {
+    background-image: url(../imgs/bg.jpg);
+    background-size: cover;
+    margin-inline: 100px;
+    color: white;
+    font-family: 'Outfit', Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+nav img {
+    height: 50px;
+}
+#languages {
+    padding-top: 7px;
+    float: right;
+    height: 32px;
+}
+/* QUESTIONS STYLE  */
+#question-container p {
+    font-size: 1.5rem;
+    word-wrap: break-word;
+    /* font-weight: 100; */
+}
+
+/* RADIO CIRCLE HIDDED */
+#question-container input[type="radio"]
+{
+    display: none;
+}
+
+/* ANSWERS STYLE  */
+label {
+    padding: 17px;
+    display: inline-block;
+    width: 46%;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-weight: 600;
+    border-radius: 45px;
+    margin-left: 21px;
+    box-shadow: white -1px -2px 2px 0px;
+    cursor:pointer;
+    user-select: none;
+}
+label:hover {
+    background-color: rgba(255, 255, 255, 0.308);
+}
+.selected {
+    background-color: #00ffff;
+    color: #0b113b;
+    
+}
+.selected:hover {
+    background-color: #00ffff;
+    color: #0b113b;
+    
+}
+
+/* BUTTON STYLE  */
+button {
+    display: block;
+    margin-top: 100px;
+    padding-inline: 20px;
+    padding-block: 10px;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid white;
+    font-size: 1.6rem;
+    cursor: pointer;
+    user-select: none;
+
+}
+button:hover {
+    background-color: rgba(255, 255, 255, 0.308);
+}
+
