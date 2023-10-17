@@ -1,24 +1,29 @@
 body {
     background-image: url(../imgs/bg.jpg);
     background-size: cover;
-    margin-inline: 100px;
+    margin-inline: 150px;
     color: white;
     font-family: 'Outfit', Helvetica, sans-serif;
     box-sizing: border-box;
 }
+nav {
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
 nav img {
     height: 50px;
 }
-#languages {
-    padding-top: 7px;
-    float: right;
-    height: 32px;
+main {
+    margin-inline: 50px;
 }
+
 /* QUESTIONS STYLE  */
 #question-container p {
-    font-size: 1.5rem;
+    text-align: center;
+    font-size: 4rem;
     word-wrap: break-word;
-    /* font-weight: 100; */
+    
+   
 }
 
 /* RADIO CIRCLE HIDDED */
@@ -43,18 +48,16 @@ label {
     user-select: none;
 }
 label:hover {
-    background-color: rgba(255, 255, 255, 0.308);
+    background: rgb(140,0,122);
+background: linear-gradient(0deg, rgba(140,0,122,1) 0%, rgba(205,0,146,1) 100%);
+ 
 }
 .selected {
-    background-color: #00ffff;
-    color: #0b113b;
+    background: rgb(140,0,122);
+    background: linear-gradient(0deg, rgba(140,0,122,1) 0%, rgba(205,0,146,1) 100%);
     
 }
-.selected:hover {
-    background-color: #00ffff;
-    color: #0b113b;
-    
-}
+
 
 /* BUTTON STYLE  */
 button {
