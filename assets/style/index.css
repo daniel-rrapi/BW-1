@@ -46,6 +46,9 @@ ul {
 .boldText {
   font-weight: 600;
 }
+.bold-Text {
+  font-weight: 600;
+}
 
 #Confirmation {
   -webkit-appearance: none;
