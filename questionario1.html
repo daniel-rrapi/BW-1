@@ -3,13 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/style/questionario.css" />
     <title>Questionario con Timer</title>
   </head>
   <body>
-    <div id="question-index">Domanda 1 di X</div>
+    <nav>
+      <img src="./assets/imgs/epicode_logo.png" alt="" />
+      <div id="timer"></div>
+    </nav>
+
     <div id="question-container"></div>
-    <div id="timer"></div>
-    <button id="next-button" onclick="nextQuestion()" style="display: none">Domanda successiva</button>
+    <div id="question-index">Domanda 1 di X</div>
+    <button
+      id="next-button"
+      onclick="nextQuestion()"
+      style="visibility: hidden"
+    >
+      Domanda successiva
+    </button>
     <div id="result-container"></div>
 
     <script src="/script/questionario.js"></script>
