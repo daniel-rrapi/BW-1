@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Give us a Feedback!</title>
     <link rel="stylesheet" href="./assets/style/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header>
@@ -13,13 +16,36 @@
     <main>
       <h1>Tell us how it's going</h1>
       <p>From 0 to 10, how likely are you to recommend EPICODE <br />to a friend or a colleague?</p>
-      <div class="rating"></div>
-      <div class ="feedback">
-      <label for="comment">Leave us an open feedback about your experience so far</label>
-      <br />
-      <input type="text" placeholder="Write your comment here" />
-        </div>
+      <div class="rating">
+        <input type="radio" id="star1" name="rating" value="1" />
+        <label for="star1"></label>
+        <input type="radio" id="star2" name="rating" value="2" />
+        <label for="star2"></label>
+        <input type="radio" id="star3" name="rating" value="3" />
+        <label for="star3"></label>
+        <input type="radio" id="star4" name="rating" value="4" />
+        <label for="star4"></label>
+        <input type="radio" id="star5" name="rating" value="5" />
+        <label for="star5"></label>
+        <input type="radio" id="star6" name="rating" value="6" />
+        <label for="star6"></label>
+        <input type="radio" id="star7" name="rating" value="7" />
+        <label for="star7"></label>
+        <input type="radio" id="star8" name="rating" value="8" />
+        <label for="star8"></label>
+        <input type="radio" id="star9" name="rating" value="9" />
+        <label for="star9"></label>
+        <input type="radio" id="star10" name="rating" value="10" />
+        <label for="star10"></label>
+      </div>
+
+      <div class="feedback">
+        <label for="comment">Leave us an open feedback about your experience so far</label>
+        <br />
+        <input type="text" placeholder="Write your comment here (optional)" required />
+      </div>
+      <button id="submit">MORE INFO</button>
     </main>
-    <script src="./script/B1.js"></script>
+    <script src="./script/fb.js"></script>
   </body>
 </html>
