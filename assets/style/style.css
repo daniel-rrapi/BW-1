@@ -1,0 +1,44 @@
+body {
+    font-family: 'Outfit', sans-serif;
+    background-image: url(../imgs/bg.jpg);
+    background-size: cover;
+    margin-inline: 150px;
+    color: white;
+}
+
+/* NAV STYLE  */
+nav img {
+    height: 50px;
+
+}
+nav {
+    margin-top: 40px;
+}
+
+/* MAIN STYLE  */
+main h1 {
+    text-align: center;
+    font-size: 5rem;
+    line-height: 1px;
+    
+}
+main p {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1rem;
+}
+button {
+    padding-inline: 64px;
+    padding-block: 18px;
+    border: 2px solid white;
+    background-color: transparent;
+    margin-inline: 41.7%;
+}
+button:hover {
+    background-color: rgba(rgba(0, 0, 0, 0.13), green, blue, alpha);
+}
+button a {
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+}
