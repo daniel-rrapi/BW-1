@@ -114,14 +114,14 @@ function displayQuestion() {
 
   question.incorrect_answers.forEach((answer) => {
     questionContainer.innerHTML += `
-      <input type="radio" name="answer" value="${answer}">
-      <label>${answer}</label><br>
+      <input type="radio" name="answer" value="${answer}" id="${answer}">
+      <label for="${answer}">${answer}</label>
     `;
   });
 
   questionContainer.innerHTML += `
-    <input type="radio" name="answer" value="${question.correct_answer}">
-    <label>${question.correct_answer}</label><br>
+    <input type="radio" name="answer" value="${question.correct_answer}" id="${question.correct_answer}">
+    <label for="${question.correct_answer}">${question.correct_answer}</label>
   `;
 
   questionContainer.innerHTML += `
