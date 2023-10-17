@@ -167,11 +167,19 @@ function updateTimerDisplay(timeRemaining) {
 function nextQuestion() {
   const selectedAnswer = document.querySelector('input[name="answer"]:checked');
   if (selectedAnswer && selectedAnswer.value === questions[currentQuestionIndex].correct_answer) {
+    score++;
   }
 
   currentQuestionIndex++;
   clearInterval(timer);
-  displayQuestion();
+  if (currentQuestionIndex >= questions.length) {
+    // Il quiz è finito, visualizza il risultato finale
+    questionContainer.innerHTML = "";
+    resultContainer.innerHTML = `Punteggio finale: ${score} su ${questions.length}`;
+    timerElement.style.display = "none";
+  } else {
+    displayQuestion();
+  }
 }
 
 function checkAnswerAutomatically() {
