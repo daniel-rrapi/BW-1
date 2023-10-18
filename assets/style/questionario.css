@@ -13,6 +13,9 @@ nav {
 nav img {
     height: 50px;
 }
+#timer {
+    float: right;
+}
 main {
     margin-inline: 50px;
 }
