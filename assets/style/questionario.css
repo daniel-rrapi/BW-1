@@ -103,7 +103,7 @@ button:hover {
   
   .base-timer__path-elapsed {
     stroke-width: 7px;
-    stroke: grey;
+    stroke: #99699d;
   }
   
   .base-timer__path-remaining {
@@ -113,21 +113,10 @@ button:hover {
     transform-origin: center;
     transition: 1s linear all;
     fill-rule: nonzero;
-    stroke: currentColor;
+    stroke: #00ffff;
   }
   
-  .base-timer__path-remaining.green {
-    color: rgb(65, 184, 131);
-  }
-  
-  .base-timer__path-remaining.orange {
-    color: orange;
-  }
-  
-  .base-timer__path-remaining.red {
-    color: red;
-  }
-  
+ 
   .base-timer__label {
     /* position: absolute; */
     width: 300px;
