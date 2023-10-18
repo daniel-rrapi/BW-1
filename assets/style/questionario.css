@@ -25,8 +25,12 @@ main {
     text-align: center;
     font-size: 4rem;
     word-wrap: break-word;
+    user-select: none;
     
    
+}
+#question-index {
+    margin-top: 130px;
 }
 
 /* RADIO CIRCLE HIDDED */
@@ -75,6 +79,7 @@ button {
     font-size: 1.6rem;
     cursor: pointer;
     user-select: none;
+    float:right;
 
 }
 button:hover {
