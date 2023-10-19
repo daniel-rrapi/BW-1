@@ -135,16 +135,15 @@ function displayQuestion() {
 
   questionIndexElement.textContent = `Domanda ${currentQuestionIndex + 1} di ${questions.length}`;
   questionContainer.innerHTML = `<p>${question.question}</p>`;
-  question.incorrect_answers.forEach((answer) => {
+  question.incorrect_answers.concat(question.correct_answer).forEach((answer) => {
     questionContainer.innerHTML += `
-<input type="radio" name="answer" value="${answer}" id="${answer}">
-<label for="${answer}">${answer}</label>`;
+      <input type="radio" name="answer" value="${answer}" id="${answer}">
+      <label for="${answer}">${answer}</label>`;
   });
+
   questionContainer.innerHTML += `
-<input type="radio" name="answer" value="${question.correct_answer}" id="${question.correct_answer}">
-<label for="${question.correct_answer}">${question.correct_answer}</label>`;
-  questionContainer.innerHTML += `
-<button id="next-button" onclick="nextQuestion()" style="visibility: hidden;">Domanda successiva</button>`;
+    <button id="next-button" onclick="nextQuestion()" style="visibility: hidden;">Domanda successiva</button>`;
+
   const answerOptions = document.querySelectorAll('input[name="answer"]');
   answerOptions.forEach((option) => {
     option.addEventListener("change", handleAnswerSelection);
@@ -169,6 +168,7 @@ function nextQuestion() {
     displayQuestion();
   }
 }
+
 function hideTimer() {
   const timerElement = document.querySelector(".circle-timer");
   timerElement.style.display = "none";
@@ -184,7 +184,17 @@ function checkSelectedAnswer() {
   }
 }
 
-function handleAnswerSelection() {
+function handleAnswerSelection(event) {
+  const allAnswerLabels = document.querySelectorAll('input[name="answer"] + label');
+  allAnswerLabels.forEach((label) => {
+    label.classList.remove("selected");
+  });
+
+  const selectedLabel = event.target.nextElementSibling;
+  if (selectedLabel) {
+    selectedLabel.classList.add("selected");
+  }
+
   checkSelectedAnswer();
 }
 
