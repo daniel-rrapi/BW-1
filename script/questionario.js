@@ -128,8 +128,9 @@ function displayQuestion() {
   const question = questions[currentQuestionIndex];
   if (!question) {
     questionContainer.innerHTML = "";
-    resultContainer.innerHTML = `Punteggio finale: ${score} su ${questions.length}`;
     questionIndexElement.style.display = "none";
+    hideTimer();
+    calculateAndDisplayResults();
     return;
   }
 
@@ -161,9 +162,9 @@ function nextQuestion() {
   currentQuestionIndex++;
   if (currentQuestionIndex >= questions.length) {
     questionContainer.innerHTML = "";
-    resultContainer.innerHTML = `Punteggio finale: ${score} su ${questions.length}`;
     questionIndexElement.style.display = "none";
     hideTimer();
+    calculateAndDisplayResults();
   } else {
     displayQuestion();
   }
@@ -196,6 +197,32 @@ function handleAnswerSelection(event) {
   }
 
   checkSelectedAnswer();
+}
+
+function calculateAndDisplayResults() {
+  const totalQuestions = questions.length;
+  const correctPercentage = ((score / totalQuestions) * 100).toFixed(1);
+  const incorrectPercentage = (((totalQuestions - score) / totalQuestions) * 100).toFixed(1);
+  resultContainer.innerHTML += `<p>Risposte corrette: ${correctPercentage}%</p>`;
+  resultContainer.innerHTML += `<p>Risposte errate: ${incorrectPercentage}%</p>`;
+  if (score >= totalQuestions / 2) {
+    // Se il punteggio è almeno la metà del totale delle domande, l'esame è superato.
+    resultContainer.innerHTML = `
+      Congratulazioni!<br>
+      Hai superato l'esame.<br>
+      Ti invieremo il certificato in pochi minuti.<br>
+      Controlla la tua email (incluse promozioni/cartella spam).
+    `;
+  } else {
+    // Se il punteggio è inferiore alla metà del totale delle domande, l'esame non è superato.
+    resultContainer.innerHTML = `
+      Ci dispiace molto, non hai superato l'esame.<br>
+      Ti invitiamo a riprovare.<br>
+      Controlla la tua email (incluse promozioni/cartella spam).
+    `;
+  }
+  resultContainer.innerHTML += `<p>Risposte corrette: ${correctPercentage}%</p>`;
+  resultContainer.innerHTML += `<p>Risposte errate: ${incorrectPercentage}%</p>`;
 }
 
 displayQuestion();
