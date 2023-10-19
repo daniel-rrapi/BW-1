@@ -10,6 +10,11 @@ h3 {
   font-family: "Outfit", sans-serif;
 }
 /* NAV STYLE  */
+
+#mid-container {
+  margin-left: 200px;
+}
+
 nav img {
   height: 50px;
 }
@@ -92,6 +97,9 @@ ul {
 
 /* BUTTON STYLE  */
 #NextPage {
+  position: absolute;
+  right: 20%;
+  bottom: 10%;
   float: right;
   color: #0b113b;
   background-color: #00ffff;
@@ -103,6 +111,7 @@ ul {
   cursor: pointer;
   box-shadow: 0px 0px 20px 0px #00ffff;
 }
+
 #NextPage:disabled {
   background-color: rgba(255, 255, 255, 0.1);
   color: black;
