@@ -13,9 +13,18 @@
     <div class="circles">
       <div class="inner"></div>
       <svg class="overlay" viewBox="0 0 160 160">
-        <circle cx="80" cy="80" r="79" fill="none" stroke="#00ffff" stroke-width="1" />
+        <circle
+          cx="80"
+          cy="80"
+          r="79"
+          fill="none"
+          stroke="#00ffff"
+          stroke-width="20"
+          stroke-dasharray="500"
+          stroke-dashoffset="0"
+        ></circle>
         <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="white" font-size="16" id="timer">
-          Timer
+          <tspan dy="4" id="timer-text">Timer</tspan>
         </text>
       </svg>
     </div>

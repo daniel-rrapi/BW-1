@@ -13,7 +13,7 @@ const questions = [
     type: "multiple",
     difficulty: "easy",
     question:
-      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
     incorrect_answers: ["Static", "Private", "Public"],
     timelimit: 60,
@@ -107,18 +107,18 @@ let timer;
 
 const questionContainer = document.getElementById("question-container");
 const resultContainer = document.getElementById("result-container");
-const timerElement = document.getElementById("timer");
-const questionIndexElement = document.getElementById("question-index");
 
+const questionIndexElement = document.getElementById("question-index");
 function displayQuestion() {
   const question = questions[currentQuestionIndex];
   if (!question) {
     questionContainer.innerHTML = "";
     resultContainer.innerHTML = `Punteggio finale: ${score} su ${questions.length}`;
-    timerElement.style.display = "none";
     questionIndexElement.style.display = "none";
     return;
   }
+
+  document.querySelector(".overlay circle").style.strokeDashoffset = 0;
 
   questionIndexElement.textContent = `Domanda ${currentQuestionIndex + 1} di ${questions.length}`;
 
@@ -149,40 +149,47 @@ function displayQuestion() {
 
   checkSelectedAnswer();
 }
-
 function startTimer(timeLimit) {
-  let timeRemaining = timeLimit;
+  const svg = document.querySelector(".overlay circle");
+  const offset = parseFloat(window.getComputedStyle(svg).getPropertyValue("stroke-dasharray"));
 
-  timerElement.style.display = "inline";
-  updateTimerDisplay(timeRemaining);
+  const startTime = performance.now();
+  const timerElement = document.getElementById("timer");
 
-  const animationDuration = timeLimit * 1000;
+  function updateTimer(currentTime) {
+    const elapsedTime = currentTime - startTime;
+    const progress = Math.min(1, elapsedTime / (timeLimit * 1000));
 
-  timer = setInterval(function () {
-    timeRemaining--;
-    if (timeRemaining < 0) {
-      clearInterval(timer);
-      checkAnswerAutomatically();
-    } else {
+    // Modifica la riga seguente per ottenere lo svuotamento in senso orario
+    svg.style.strokeDashoffset = offset * progress;
+
+    if (progress < 1) {
+      const timeRemaining = Math.ceil(timeLimit - elapsedTime / 1000);
       updateTimerDisplay(timeRemaining);
+      requestAnimationFrame(updateTimer);
+    } else {
+      checkAnswerAutomatically();
     }
-  }, 1000);
-
-  const existingAnimation = document.getElementById("progressAnimation");
-  if (existingAnimation) {
-    existingAnimation.parentNode.removeChild(existingAnimation);
   }
 
-  const style = document.createElement("style");
-  style.id = "progressAnimation";
-  style.innerHTML = `@keyframes progressAnimation { to { stroke-dashoffset: 0; } }`;
-  document.head.appendChild(style);
+  function updateTimerDisplay(timeRemaining) {
+    if (timeRemaining < 0) {
+      timeRemaining = 0;
+    }
+    timerElement.textContent = ` ${timeRemaining} secondi`;
+  }
 
-  const circle = document.querySelector(".overlay circle");
-  circle.style.animation = `progressAnimation ${animationDuration}ms linear forwards`;
+  requestAnimationFrame(updateTimer);
+}
+function updateProgressBar(elapsedTime, totalTime) {
+  const progress = (elapsedTime / totalTime) * 100;
+  document.querySelector(".overlay circle").style.strokeDashoffset = progress;
 }
 function updateTimerDisplay(timeRemaining) {
-  timerElement.textContent = ` ${timeRemaining} secondi`;
+  if (timeRemaining < 0) {
+    timeRemaining = 0;
+  }
+  document.getElementById("timer-text").textContent = `${timeRemaining} secondi`;
 }
 
 function nextQuestion() {

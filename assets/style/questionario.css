@@ -106,17 +106,25 @@ button:hover {
   top: 0;
   left: 0;
 }
+
 .overlay circle {
   stroke-dasharray: 500;
-  stroke-dashoffset: 500;
+  stroke-dashoffset: 0;
   stroke-width: 20;
-  transform: rotate(-90deg);
+  transform: rotate(-90deg) scaleY(-1);
   transform-origin: center;
-  animation: progressAnimation 60s linear forwards;
 }
 
-@keyframes progressAnimation {
+@keyframes anim {
+  from {
+    stroke-dashoffset: 500;
+  }
   to {
     stroke-dashoffset: 0;
+    transform: rotate(360deg) scaleY(-1);
   }
+}
+svg {
+  stroke-dasharray: 1000;
+  animation-timing-function: linear;
 }
