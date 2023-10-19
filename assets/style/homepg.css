@@ -1,0 +1,120 @@
+body {
+  background-image: url(../imgs/bg.jpg);
+  color: white;
+  margin-inline: 80px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-size: cover;
+}
+h1,
+h3 {
+  font-family: "Outfit", sans-serif;
+}
+/* NAV STYLE  */
+
+#mid-container {
+  margin-left: 200px;
+}
+
+nav img {
+  height: 50px;
+}
+nav {
+  margin-bottom: 100px;
+  margin-top: 30px;
+}
+
+h1 {
+  font-size: 6rem;
+  font-weight: 100;
+  line-height: 5rem;
+}
+h1 span {
+  font-weight: 780;
+}
+h3 {
+  color: #c2128d;
+  font-size: 3rem;
+  margin: 0px;
+}
+p {
+  font-size: 1.5rem;
+}
+ul li {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+ul {
+  margin-top: 53px;
+  margin-bottom: 66px;
+}
+
+.boldText {
+  font-weight: 600;
+}
+.bold-Text {
+  font-weight: 600;
+}
+
+#Confirmation {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 1.15em;
+  height: 1.15em;
+  place-content: center;
+  border: 0.15em solid white;
+  border-radius: 0.15em;
+  font: inherit;
+  display: grid;
+  box-sizing: border-box;
+}
+
+#Confirmation::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms;
+  box-shadow: inset 1em 1em #00ffff;
+}
+
+#Confirmation:checked::before {
+  transform: scale(1);
+}
+
+#checkLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  user-select: none; /* Il testo non verrà evidenziato con il mouse */
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+/* BUTTON STYLE  */
+#NextPage {
+  position: absolute;
+  right: 20%;
+  bottom: 10%;
+  float: right;
+  color: #0b113b;
+  background-color: #00ffff;
+  padding-inline: 60px;
+  padding-block: 21px;
+  font-size: 1.7rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px 0px #00ffff;
+}
+
+#NextPage:disabled {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: black;
+  cursor: not-allowed;
+  box-shadow: 0px 0px 20px 0px transparent;
+}
