@@ -60,7 +60,6 @@ background: linear-gradient(0deg, rgba(140,0,122,1) 0%, rgba(205,0,146,1) 100%);
 .selected {
     background: rgb(140,0,122);
     background: linear-gradient(0deg, rgba(140,0,122,1) 0%, rgba(205,0,146,1) 100%);
-    
 }
 
 
@@ -91,13 +90,13 @@ button:hover {
     height: 100px;
   }
 
-  .circular-chart {
+  /* .circular-chart {
     display: block;
     width: 100%;
     padding-bottom: 100%;
     background: #fff;
     border-radius: 50%;
-  }
+  } */
 
   .circle-bg {
     fill: none;
