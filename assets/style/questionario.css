@@ -123,7 +123,7 @@ button:hover {
 
   @keyframes progress {
     0% {
-      stroke-dasharray: 0 100;
+      stroke-dasharray: 100 0;
     }
   }
 
