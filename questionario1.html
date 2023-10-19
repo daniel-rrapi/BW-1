@@ -9,9 +9,16 @@
   <body>
     <nav>
       <img src="./assets/imgs/epicode_logo.png" alt="" />
-      <div id="timer"></div>
     </nav>
-
+    <div class="circles">
+      <div class="inner"></div>
+      <svg class="overlay" viewBox="0 0 160 160">
+        <circle cx="80" cy="80" r="79" fill="none" stroke="#00ffff" stroke-width="1" />
+        <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="white" font-size="16" id="timer">
+          Timer
+        </text>
+      </svg>
+    </div>
     <div id="question-container"></div>
     <div id="question-index">Domanda 1 di X</div>
     <button id="next-button" onclick="nextQuestion()" style="visibility: hidden">Domanda successiva</button>

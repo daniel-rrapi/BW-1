@@ -156,6 +156,8 @@ function startTimer(timeLimit) {
   timerElement.style.display = "inline";
   updateTimerDisplay(timeRemaining);
 
+  const animationDuration = timeLimit * 1000;
+
   timer = setInterval(function () {
     timeRemaining--;
     if (timeRemaining < 0) {
@@ -165,10 +167,22 @@ function startTimer(timeLimit) {
       updateTimerDisplay(timeRemaining);
     }
   }, 1000);
-}
 
+  const existingAnimation = document.getElementById("progressAnimation");
+  if (existingAnimation) {
+    existingAnimation.parentNode.removeChild(existingAnimation);
+  }
+
+  const style = document.createElement("style");
+  style.id = "progressAnimation";
+  style.innerHTML = `@keyframes progressAnimation { to { stroke-dashoffset: 0; } }`;
+  document.head.appendChild(style);
+
+  const circle = document.querySelector(".overlay circle");
+  circle.style.animation = `progressAnimation ${animationDuration}ms linear forwards`;
+}
 function updateTimerDisplay(timeRemaining) {
-  timerElement.textContent = `Tempo rimanente: ${timeRemaining} secondi`;
+  timerElement.textContent = ` ${timeRemaining} secondi`;
 }
 
 function nextQuestion() {
