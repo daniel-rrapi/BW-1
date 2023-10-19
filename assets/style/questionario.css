@@ -85,3 +85,45 @@ button:hover {
 }
 
 
+.circle-timer {
+    position: relative;
+    width: 100px;
+    height: 100px;
+  }
+
+  .circular-chart {
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  .circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 2;
+  }
+
+  .circle {
+    fill: none;
+    stroke: #ff2c70;
+    stroke-width: 2;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+  }
+
+  .time-left {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+  }
+
+  @keyframes progress {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+  }
+  

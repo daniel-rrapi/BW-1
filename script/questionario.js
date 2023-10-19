@@ -6,17 +6,15 @@ const questions = [
     question: "What does CPU stand for?",
     correct_answer: "Central Processing Unit",
     incorrect_answers: ["Central Process Unit", "Computer Personal Unit", "Central Processor Unit"],
-    timelimit: 60,
   },
   {
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
     question:
-      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
     incorrect_answers: ["Static", "Private", "Public"],
-    timelimit: 60,
   },
   {
     category: "Science: Computers",
@@ -25,7 +23,6 @@ const questions = [
     question: "The logo for Snapchat is a Bell.",
     correct_answer: "False",
     incorrect_answers: ["True"],
-    timelimit: 30,
   },
   {
     category: "Science: Computers",
@@ -34,7 +31,6 @@ const questions = [
     question: "Pointers were not used in the original C programming language; they were added later on in C++.",
     correct_answer: "False",
     incorrect_answers: ["True"],
-    timelimit: 30,
   },
   {
     category: "Science: Computers",
@@ -43,7 +39,6 @@ const questions = [
     question: "What is the most preferred image format used for logos in the Wikimedia database?",
     correct_answer: ".svg",
     incorrect_answers: [".png", ".jpeg", ".gif"],
-    timelimit: 60,
   },
   {
     category: "Science: Computers",
@@ -52,7 +47,6 @@ const questions = [
     question: "In web design, what does CSS stand for?",
     correct_answer: "Cascading Style Sheet",
     incorrect_answers: ["Counter Strike: Source", "Corrective Style Sheet", "Computer Style Sheet"],
-    timelimit: 60,
   },
   {
     category: "Science: Computers",
@@ -61,7 +55,6 @@ const questions = [
     question: "What is the code name for the mobile operating system Android 7.0?",
     correct_answer: "Nougat",
     incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
-    timelimit: 60,
   },
   {
     category: "Science: Computers",
@@ -70,7 +63,6 @@ const questions = [
     question: "On Twitter, what is the character limit for a Tweet?",
     correct_answer: "140",
     incorrect_answers: ["120", "160", "100"],
-    timelimit: 60,
   },
   {
     category: "Science: Computers",
@@ -79,7 +71,6 @@ const questions = [
     question: "Linux was first created as an alternative to Windows XP.",
     correct_answer: "False",
     incorrect_answers: ["True"],
-    timelimit: 30,
   },
   {
     category: "Science: Computers",
@@ -88,7 +79,6 @@ const questions = [
     question: "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
     incorrect_answers: ["Python", "C", "Jakarta"],
-    timelimit: 60,
   },
 ];
 
@@ -103,100 +93,90 @@ shuffleArray(questions);
 
 let currentQuestionIndex = 0;
 let score = 0;
-let timer;
-
 const questionContainer = document.getElementById("question-container");
 const resultContainer = document.getElementById("result-container");
-const timerElement = document.getElementById("timer");
 const questionIndexElement = document.getElementById("question-index");
+let startTime;
+let duration;
+
+function updateCircleTimer() {
+  let elapsed = performance.now() - startTime;
+  let timeLeft = duration - elapsed;
+  if (timeLeft <= 0) {
+    timeLeft = 0;
+    nextQuestion();
+    return;
+  }
+  const circle = document.querySelector(".circle");
+  const timeLeftLabel = document.querySelector(".time-left");
+  let percentage = (timeLeft / duration) * 100;
+  circle.setAttribute("stroke-dasharray", ` ${percentage}, 100`);
+  timeLeftLabel.textContent = Math.ceil(timeLeft / 1000);
+  if (timeLeft > 0) {
+    requestAnimationFrame(updateCircleTimer);
+  }
+}
+
+function resetTimer() {
+  const questionType = questions[currentQuestionIndex].type;
+  duration = questionType === "boolean" ? 30 * 1000 : 60 * 1000;
+  startTime = performance.now();
+  updateCircleTimer();
+}
 
 function displayQuestion() {
   const question = questions[currentQuestionIndex];
   if (!question) {
     questionContainer.innerHTML = "";
     resultContainer.innerHTML = `Punteggio finale: ${score} su ${questions.length}`;
-    timerElement.style.display = "none";
     questionIndexElement.style.display = "none";
     return;
   }
 
   questionIndexElement.textContent = `Domanda ${currentQuestionIndex + 1} di ${questions.length}`;
-
   questionContainer.innerHTML = `<p>${question.question}</p>`;
-
   question.incorrect_answers.forEach((answer) => {
     questionContainer.innerHTML += `
-      <input type="radio" name="answer" value="${answer}" id="${answer}">
-      <label for="${answer}">${answer}</label>
-    `;
+<input type="radio" name="answer" value="${answer}" id="${answer}">
+<label for="${answer}">${answer}</label>`;
   });
-
   questionContainer.innerHTML += `
-    <input type="radio" name="answer" value="${question.correct_answer}" id="${question.correct_answer}">
-    <label for="${question.correct_answer}">${question.correct_answer}</label>
-  `;
-
+<input type="radio" name="answer" value="${question.correct_answer}" id="${question.correct_answer}">
+<label for="${question.correct_answer}">${question.correct_answer}</label>`;
   questionContainer.innerHTML += `
-    <button id="next-button" onclick="nextQuestion()" style="visibility: hidden;">Domanda successiva</button>
-  `;
-
-  startTimer(question.timelimit);
-
+<button id="next-button" onclick="nextQuestion()" style="visibility: hidden;">Domanda successiva</button>`;
   const answerOptions = document.querySelectorAll('input[name="answer"]');
   answerOptions.forEach((option) => {
     option.addEventListener("change", handleAnswerSelection);
   });
-
   checkSelectedAnswer();
-}
-
-function startTimer(timeLimit) {
-  let timeRemaining = timeLimit;
-
-  timerElement.style.display = "inline";
-  updateTimerDisplay(timeRemaining);
-
-  timer = setInterval(function () {
-    timeRemaining--;
-    if (timeRemaining < 0) {
-      clearInterval(timer);
-      checkAnswerAutomatically();
-    } else {
-      updateTimerDisplay(timeRemaining);
-    }
-  }, 1000);
-}
-
-function updateTimerDisplay(timeRemaining) {
-  timerElement.textContent = `Tempo rimanente: ${timeRemaining} secondi`;
+  resetTimer();
 }
 
 function nextQuestion() {
+  resetTimer();
   const selectedAnswer = document.querySelector('input[name="answer"]:checked');
   if (selectedAnswer && selectedAnswer.value === questions[currentQuestionIndex].correct_answer) {
     score++;
   }
-
   currentQuestionIndex++;
-  clearInterval(timer);
   if (currentQuestionIndex >= questions.length) {
     questionContainer.innerHTML = "";
     resultContainer.innerHTML = `Punteggio finale: ${score} su ${questions.length}`;
-    timerElement.style.display = "none";
     questionIndexElement.style.display = "none";
+    hideTimer();
   } else {
     displayQuestion();
   }
 }
-
-function checkAnswerAutomatically() {
-  nextQuestion();
+function hideTimer() {
+  const timerElement = document.querySelector(".circle-timer");
+  timerElement.style.display = "none";
 }
 
 function checkSelectedAnswer() {
   const selectedAnswer = document.querySelector('input[name="answer"]:checked');
   const nextButton = document.getElementById("next-button");
-
   if (selectedAnswer) {
     nextButton.style.visibility = "visible";
   } else {
@@ -205,16 +185,6 @@ function checkSelectedAnswer() {
 }
 
 function handleAnswerSelection() {
-  const answerLabels = document.querySelectorAll("label");
-  answerLabels.forEach((label) => {
-    label.classList.remove("selected");
-  });
-
-  const selectedLabel = document.querySelector('input[name="answer"]:checked + label');
-  if (selectedLabel) {
-    selectedLabel.classList.add("selected");
-  }
-
   checkSelectedAnswer();
 }
 
