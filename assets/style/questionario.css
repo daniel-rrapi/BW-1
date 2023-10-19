@@ -86,8 +86,9 @@ button:hover {
 
 .circle-timer {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
+    float: right;
   }
 
   /* .circular-chart {
@@ -100,14 +101,14 @@ button:hover {
 
   .circle-bg {
     fill: none;
-    stroke: #eee;
-    stroke-width: 2;
+    stroke: rgba(255, 255, 255, 0.13);
+    stroke-width: 4;
   }
 
   .circle {
     fill: none;
-    stroke: #ff2c70;
-    stroke-width: 2;
+    stroke: #00ffff;
+    stroke-width: 4;
     stroke-linecap: round;
     animation: progress 1s ease-out forwards;
   }
@@ -125,4 +126,6 @@ button:hover {
       stroke-dasharray: 0 100;
     }
   }
+
+
   
