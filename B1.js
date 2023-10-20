@@ -5,5 +5,5 @@ Confirmation.addEventListener("change", function () {
 });
 
 NextPage.addEventListener("click", function () {
-  window.location.href = "https://www.google.it";
+  window.location.href = "./questionario1.html";
 });

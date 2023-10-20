@@ -249,7 +249,7 @@ function calculateAndDisplayResults() {
       <text x="100" y="150" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Controlla la tua email</text>
       <text x="100" y="170" font-family="Arial" font-size="16" fill="white" text-anchor="middle">(incluse promozioni/cartella spam).</text>
     </svg>
-    <button onclick="window.location.href='nuovaPagina.html'">Rate Us</button>
+    <button onclick="window.location.href='feedback.html'">Rate Us</button>
 
     `
   } else {
@@ -268,7 +268,7 @@ function calculateAndDisplayResults() {
       <text x="100" y="130" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Controlla la tua email</text>
       <text x="100" y="150" font-family="Arial" font-size="16" fill="white" text-anchor="middle">(incluse promozioni/cartella spam).</text>
     </svg>
-    <button onclick="window.location.href='nuovaPagina.html'">Rate Us</button>
+    <button onclick="window.location.href='feedback.html'">Rate Us</button>
 
     `
   }
