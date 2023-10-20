@@ -9,7 +9,7 @@ body {
 
 nav {
   margin-top: 40px;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
 }
 
 nav img {
@@ -153,22 +153,25 @@ button:hover {
 }
 
 #result-container {
-  width: 90em;
-  height: 40em;
+  width: 108em;
+  height: 103em;
 }
 
 #result-container h1 {
   display: inline-block;
-  left: 50%;
+  left: 38%;
   position: relative;
-  top: -10%;
+  top: -1%;
+  font-size: 4.5rem;
 }
 
 #result-container h2 {
   display: inline;
-  left: 34%;
+  left: 18%;
   position: relative;
-
+  top: 2%;
+  font-size: 2rem;
+  font-weight: 100;
 }
 
 #result-container svg {
@@ -189,48 +192,53 @@ button:hover {
 #wrong {
   display: inline;
   position: relative;
-  left: 41%;
-  top: 25%;
+  left: 63%;
+  top: 6%;
   font-weight: 800;
   user-select: none;
+  font-size: 2.2rem;
 }
 
 #correct {
   position: relative;
   display: inline;
-  left: -20%;
-  top: 25%;
+  left: -28%;
+  top: 13%;
   font-weight: 900;
   user-select: none;
-  /* font-size: 20px; */
+  font-size: 2.2rem;
 }
 
 #correctCounter {
   display: inline-block;
   position: relative;
-  left: -36%;
-  top: 29%;
+  left: -2%;
+  top: 8%;
   user-select: none;
+  font-size: 1.5rem;
 }
 
 #wrongCounter {
   display: inline-block;
   position: relative;
-  left: 25.55%;
-  top: 29%;
+  left: 38.55%;
+  top: 8%;
   user-select: none;
+  font-size: 1.5rem;
 }
 
 #result-container button {
   display: block;
   position: relative;
-  top: 77%;
-  right: 23.5%;
+  top: 35%;
+  right: 18.5%;
   padding-block: 22px;
   padding-inline: 92px;
   background-color: transparent;
 }
-
 svg text {
   line-height: 1rem;
+}
+#result-container button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
