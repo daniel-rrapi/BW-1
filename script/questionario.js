@@ -222,7 +222,7 @@ function calculateAndDisplayResults() {
       <text x="100" y="110" font-family="Arial" font-size="12" fill="black" text-anchor="middle">Ti invieremo il certificato</text>
       <text x="100" y="130" font-family="Arial" font-size="12" fill="black" text-anchor="middle">in pochi minuti.</text>
     </svg>
-    <button onclick="window.location.href='nuovaPagina.html'">Procedi</button>;
+    <button onclick="window.location.href='nuovaPagina.html'">Rate Us</button>;
 
     `;
   } else {
@@ -241,17 +241,17 @@ function calculateAndDisplayResults() {
       <text x="100" y="130" font-family="Arial" font-size="12" fill="black" text-anchor="middle">Controlla la tua email</text>
       <text x="100" y="150" font-family="Arial" font-size="12" fill="black" text-anchor="middle">(incluse promozioni/cartella spam).</text>
     </svg>
-    <button onclick="window.location.href='nuovaPagina.html'">Procedi</button>;
+    <button onclick="window.location.href='nuovaPagina.html'">Rate Us</button>;
 
     `;
   }
 
   resultContainer.innerHTML = resultSVG;
 
-  resultContainer.innerHTML += `<p> errate ${incorrectPercentage}%</p>`;
-  resultContainer.innerHTML += `<p> corrette ${correctPercentage}%</p>`;
-  resultContainer.innerHTML += `<p> Domande corette: ${score} / ${totalQuestions}</p>`;
-  resultContainer.innerHTML += `<p> Domande errate: ${totalQuestions - score} / ${totalQuestions}</p>`;
+  resultContainer.innerHTML += `<p> correct ${correctPercentage}%</p>`;
+  resultContainer.innerHTML += `<p> wrong ${incorrectPercentage}%</p>`;
+  resultContainer.innerHTML += `<p>  ${score} / ${totalQuestions}questions</p>`;
+  resultContainer.innerHTML += `<p>  ${totalQuestions - score} / ${totalQuestions} questiions</p>`;
 }
 
 displayQuestion();
