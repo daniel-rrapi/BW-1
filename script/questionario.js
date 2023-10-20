@@ -134,7 +134,7 @@ function displayQuestion() {
     return;
   }
 
-  questionIndexElement.textContent = `Domanda ${currentQuestionIndex + 1} di ${questions.length}`;
+  questionIndexElement.textContent = `questions ${currentQuestionIndex + 1} / ${questions.length}`;
   questionContainer.innerHTML = `<p>${question.question}</p>`;
   question.incorrect_answers.concat(question.correct_answer).forEach((answer) => {
     questionContainer.innerHTML += `
@@ -198,31 +198,60 @@ function handleAnswerSelection(event) {
 
   checkSelectedAnswer();
 }
-
 function calculateAndDisplayResults() {
   const totalQuestions = questions.length;
   const correctPercentage = ((score / totalQuestions) * 100).toFixed(1);
   const incorrectPercentage = (((totalQuestions - score) / totalQuestions) * 100).toFixed(1);
-  resultContainer.innerHTML += `<p>Risposte corrette: ${correctPercentage}%</p>`;
-  resultContainer.innerHTML += `<p>Risposte errate: ${incorrectPercentage}%</p>`;
+
+  // Calcolo dell'offset in base alla percentuale di risposte corrette
+  const circleLength = 2 * Math.PI * 40; // 2*pi*raggio del cerchio
+  const offset = circleLength * (1 - score / totalQuestions);
+
+  let resultSVG;
   if (score >= totalQuestions / 2) {
-    // Se il punteggio è almeno la metà del totale delle domande, l'esame è superato.
-    resultContainer.innerHTML = `
-      Congratulazioni!<br>
-      Hai superato l'esame.<br>
-      Ti invieremo il certificato in pochi minuti.<br>
-      Controlla la tua email (incluse promozioni/cartella spam).
+    resultSVG = `
+    <h1>Results</h1>
+   <h2>The summary of your answers:</h2>
+    <svg width="200" height="200">
+      <circle cx="100" cy="100" r="90" stroke="lightgray" stroke-width="50" fill="none" />
+      <circle cx="100" cy="100" r="90" stroke="green" stroke-width="50" fill="none" 
+        stroke-dasharray="${circleLength}" 
+        stroke-dashoffset="${offset}" />
+      <text x="100" y="70" font-family="Arial" font-size="16" fill="black" text-anchor="middle">Congratulazioni!</text>
+      <text x="100" y="90" font-family="Arial" font-size="12" fill="black" text-anchor="middle">Hai superato l'esame.</text>
+      <text x="100" y="110" font-family="Arial" font-size="12" fill="black" text-anchor="middle">Ti invieremo il certificato</text>
+      <text x="100" y="130" font-family="Arial" font-size="12" fill="black" text-anchor="middle">in pochi minuti.</text>
+    </svg>
+    <button onclick="window.location.href='nuovaPagina.html'">Procedi</button>;
+
     `;
   } else {
-    // Se il punteggio è inferiore alla metà del totale delle domande, l'esame non è superato.
-    resultContainer.innerHTML = `
-      Ci dispiace molto, non hai superato l'esame.<br>
-      Ti invitiamo a riprovare.<br>
-      Controlla la tua email (incluse promozioni/cartella spam).
+    resultSVG = `
+   <h1>Results</h1>
+   <h2>The summary of your answers:</h2>
+
+    <svg width="200" height="200">
+      <circle cx="100" cy="100" r="90" stroke="lightgray" stroke-width="50" fill="none" />
+      <circle cx="100" cy="100" r="90" stroke="red" stroke-width="50" fill="none" 
+        stroke-dasharray="${circleLength}" 
+        stroke-dashoffset="${offset}" />
+      <text x="100" y="70" font-family="Arial" font-size="16" fill="black" text-anchor="middle">Ci dispiace molto,</text>
+      <text x="100" y="90" font-family="Arial" font-size="12" fill="black" text-anchor="middle">non hai superato l'esame.</text>
+      <text x="100" y="110" font-family="Arial" font-size="12" fill="black" text-anchor="middle">Ti invitiamo a riprovare.</text>
+      <text x="100" y="130" font-family="Arial" font-size="12" fill="black" text-anchor="middle">Controlla la tua email</text>
+      <text x="100" y="150" font-family="Arial" font-size="12" fill="black" text-anchor="middle">(incluse promozioni/cartella spam).</text>
+    </svg>
+    <button onclick="window.location.href='nuovaPagina.html'">Procedi</button>;
+
     `;
   }
-  resultContainer.innerHTML += `<p>Risposte corrette: ${correctPercentage}%</p>`;
-  resultContainer.innerHTML += `<p>Risposte errate: ${incorrectPercentage}%</p>`;
+
+  resultContainer.innerHTML = resultSVG;
+
+  resultContainer.innerHTML += `<p> errate ${incorrectPercentage}%</p>`;
+  resultContainer.innerHTML += `<p> corrette ${correctPercentage}%</p>`;
+  resultContainer.innerHTML += `<p> Domande corette: ${score} / ${totalQuestions}</p>`;
+  resultContainer.innerHTML += `<p> Domande errate: ${totalQuestions - score} / ${totalQuestions}</p>`;
 }
 
 displayQuestion();

@@ -128,4 +128,12 @@ button:hover {
       stroke-dasharray: 100 0;
     }
   }
-  
+  .result-svg .circle-background {
+    fill: #E9E9E9; /* Colore di sfondo del cerchio */
+}
+
+.result-svg .text-message {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    fill: #333; /* Colore del testo */
+}
