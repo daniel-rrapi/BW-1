@@ -5,7 +5,11 @@ const questions = [
     difficulty: "easy",
     question: "What does CPU stand for?",
     correct_answer: "Central Processing Unit",
-    incorrect_answers: ["Central Process Unit", "Computer Personal Unit", "Central Processor Unit"],
+    incorrect_answers: [
+      "Central Process Unit",
+      "Computer Personal Unit",
+      "Central Processor Unit"
+    ]
   },
   {
     category: "Science: Computers",
@@ -14,7 +18,7 @@ const questions = [
     question:
       "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
-    incorrect_answers: ["Static", "Private", "Public"],
+    incorrect_answers: ["Static", "Private", "Public"]
   },
   {
     category: "Science: Computers",
@@ -22,23 +26,25 @@ const questions = [
     difficulty: "easy",
     question: "The logo for Snapchat is a Bell.",
     correct_answer: "False",
-    incorrect_answers: ["True"],
+    incorrect_answers: ["True"]
   },
   {
     category: "Science: Computers",
     type: "boolean",
     difficulty: "easy",
-    question: "Pointers were not used in the original C programming language; they were added later on in C++.",
+    question:
+      "Pointers were not used in the original C programming language; they were added later on in C++.",
     correct_answer: "False",
-    incorrect_answers: ["True"],
+    incorrect_answers: ["True"]
   },
   {
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "What is the most preferred image format used for logos in the Wikimedia database?",
+    question:
+      "What is the most preferred image format used for logos in the Wikimedia database?",
     correct_answer: ".svg",
-    incorrect_answers: [".png", ".jpeg", ".gif"],
+    incorrect_answers: [".png", ".jpeg", ".gif"]
   },
   {
     category: "Science: Computers",
@@ -46,15 +52,20 @@ const questions = [
     difficulty: "easy",
     question: "In web design, what does CSS stand for?",
     correct_answer: "Cascading Style Sheet",
-    incorrect_answers: ["Counter Strike: Source", "Corrective Style Sheet", "Computer Style Sheet"],
+    incorrect_answers: [
+      "Counter Strike: Source",
+      "Corrective Style Sheet",
+      "Computer Style Sheet"
+    ]
   },
   {
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "What is the code name for the mobile operating system Android 7.0?",
+    question:
+      "What is the code name for the mobile operating system Android 7.0?",
     correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
+    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"]
   },
   {
     category: "Science: Computers",
@@ -62,7 +73,7 @@ const questions = [
     difficulty: "easy",
     question: "On Twitter, what is the character limit for a Tweet?",
     correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"],
+    incorrect_answers: ["120", "160", "100"]
   },
   {
     category: "Science: Computers",
@@ -70,16 +81,17 @@ const questions = [
     difficulty: "easy",
     question: "Linux was first created as an alternative to Windows XP.",
     correct_answer: "False",
-    incorrect_answers: ["True"],
+    incorrect_answers: ["True"]
   },
   {
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "Which programming language shares its name with an island in Indonesia?",
+    question:
+      "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"],
-  },
+    incorrect_answers: ["Python", "C", "Jakarta"]
+  }
 ];
 
 function shuffleArray(array) {
@@ -136,7 +148,9 @@ function displayQuestion() {
   let allAnswers = [...question.incorrect_answers, question.correct_answer];
   shuffleArray(allAnswers); // Questo mescola l'ordine delle risposte
 
-  questionIndexElement.textContent = `questions ${currentQuestionIndex + 1} / ${questions.length}`;
+  questionIndexElement.textContent = `questions ${currentQuestionIndex + 1} / ${
+    questions.length
+  }`;
   questionContainer.innerHTML = `<p>${question.question}</p>`;
 
   // Utilizziamo allAnswers (risposte mescolate) per visualizzare le risposte
@@ -159,7 +173,10 @@ function displayQuestion() {
 function nextQuestion() {
   resetTimer();
   const selectedAnswer = document.querySelector('input[name="answer"]:checked');
-  if (selectedAnswer && selectedAnswer.value === questions[currentQuestionIndex].correct_answer) {
+  if (
+    selectedAnswer &&
+    selectedAnswer.value === questions[currentQuestionIndex].correct_answer
+  ) {
     score++;
   }
   currentQuestionIndex++;
@@ -189,7 +206,9 @@ function checkSelectedAnswer() {
 }
 
 function handleAnswerSelection(event) {
-  const allAnswerLabels = document.querySelectorAll('input[name="answer"] + label');
+  const allAnswerLabels = document.querySelectorAll(
+    'input[name="answer"] + label'
+  );
   allAnswerLabels.forEach((label) => {
     label.classList.remove("selected");
   });
@@ -204,10 +223,13 @@ function handleAnswerSelection(event) {
 function calculateAndDisplayResults() {
   const totalQuestions = questions.length;
   const correctPercentage = ((score / totalQuestions) * 100).toFixed(1);
-  const incorrectPercentage = (((totalQuestions - score) / totalQuestions) * 100).toFixed(1);
+  const incorrectPercentage = (
+    ((totalQuestions - score) / totalQuestions) *
+    100
+  ).toFixed(1);
 
   // Calcolo dell'offset in base alla percentuale di risposte corrette
-  const circleLength = 2 * Math.PI * 90; // 2*pi*raggio del cerchio
+  const circleLength = 2 * Math.PI * 180; // 2*pi*raggio del cerchio
   const offset = circleLength * (1 - score / totalQuestions);
 
   let resultSVG;
@@ -216,45 +238,49 @@ function calculateAndDisplayResults() {
     <h1>Results</h1>
    <h2>The summary of your answers:</h2>
     <svg width="200" height="200">
-      <circle cx="100" cy="100" r="90" stroke="lightgray" stroke-width="20" fill="none" />
-      <circle cx="100" cy="100" r="90" stroke="green" stroke-width="20" fill="none" 
+      <circle cx="100" cy="100" r="180" stroke=#C2128D stroke-width="60" fill="none" />
+      <circle cx="100" cy="100" r="180" stroke=#00FFFF stroke-width="60" fill="none" 
         stroke-dasharray="${circleLength}" 
         stroke-dashoffset="${offset}" />
-      <text x="100" y="70" font-family="Arial" font-size="16" fill="black" text-anchor="middle">Congratulazioni!</text>
-      <text x="100" y="90" font-family="Arial" font-size="12" fill="black" text-anchor="middle">Hai superato l'esame.</text>
-      <text x="100" y="110" font-family="Arial" font-size="12" fill="black" text-anchor="middle">Ti invieremo il certificato</text>
-      <text x="100" y="130" font-family="Arial" font-size="12" fill="black" text-anchor="middle">in pochi minuti.</text>
+      <text x="100" y="50" font-family="Outfit" font-size="25" fill="white" text-anchor="middle" font-weight="600" margin-bottom="10px">Congratulazioni!</text>
+      <text x="100" y="75" font-family="Outfit" font-size="25" fill="#00ffff" text-anchor="middle" font-weight="600">Hai superato l'esame.</text>
+      <text x="100" y="110" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Ti invieremo il certificato</text>
+      <text x="100" y="130" font-family="Arial" font-size="16" fill="white" text-anchor="middle">in pochi minuti.</text>
+      <text x="100" y="150" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Controlla la tua email</text>
+      <text x="100" y="170" font-family="Arial" font-size="16" fill="white" text-anchor="middle">(incluse promozioni/cartella spam).</text>
     </svg>
-    <button onclick="window.location.href='nuovaPagina.html'">Rate Us</button>;
+    <button onclick="window.location.href='nuovaPagina.html'">Rate Us</button>
 
-    `;
+    `
   } else {
     resultSVG = `
    <h1>Results</h1>
    <h2>The summary of your answers:</h2>
 
     <svg width="200" height="200">
-      <circle cx="100" cy="100" r="90" stroke="lightgray" stroke-width="20" fill="none" />
-      <circle cx="100" cy="100" r="90" stroke="red" stroke-width="20" fill="none" 
+      <circle cx="100" cy="100" r="180" stroke=#C2128D stroke-width="60" fill="none" />
+      <circle cx="100" cy="100" r="180" stroke=#00FFFF  stroke-width="60" fill="none" 
         stroke-dasharray="${circleLength}" 
         stroke-dashoffset="${offset}" />
-      <text x="100" y="70" font-family="Arial" font-size="16" fill="black" text-anchor="middle">Ci dispiace molto,</text>
-      <text x="100" y="90" font-family="Arial" font-size="12" fill="black" text-anchor="middle">non hai superato l'esame.</text>
-      <text x="100" y="110" font-family="Arial" font-size="12" fill="black" text-anchor="middle">Ti invitiamo a riprovare.</text>
-      <text x="100" y="130" font-family="Arial" font-size="12" fill="black" text-anchor="middle">Controlla la tua email</text>
-      <text x="100" y="150" font-family="Arial" font-size="12" fill="black" text-anchor="middle">(incluse promozioni/cartella spam).</text>
+      <text x="100" y="50" font-family="Outfit" font-size="25" fill="white" text-anchor="middle" font-weight="600" margin-bottom="10px">Ci dispiace molto,</text>
+      <text x="100" y="75" font-family="Outfit" font-size="25" fill="#c2128d" text-anchor="middle" font-weight="600">non hai superato l'esame.</text>
+      <text x="100" y="110" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Ti invitiamo a riprovare.</text>
+      <text x="100" y="130" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Controlla la tua email</text>
+      <text x="100" y="150" font-family="Arial" font-size="16" fill="white" text-anchor="middle">(incluse promozioni/cartella spam).</text>
     </svg>
-    <button onclick="window.location.href='nuovaPagina.html'">Rate Us</button>;
+    <button onclick="window.location.href='nuovaPagina.html'">Rate Us</button>
 
-    `;
+    `
   }
 
   resultContainer.innerHTML = resultSVG;
 
-  resultContainer.innerHTML += `<p> correct ${correctPercentage}%</p>`;
-  resultContainer.innerHTML += `<p> wrong ${incorrectPercentage}%</p>`;
-  resultContainer.innerHTML += `<p>  ${score} / ${totalQuestions}questions</p>`;
-  resultContainer.innerHTML += `<p>  ${totalQuestions - score} / ${totalQuestions} questiions</p>`;
+  resultContainer.innerHTML += `<p id="correct"> correct ${correctPercentage}%</p>`;
+  resultContainer.innerHTML += `<p id="wrong"> wrong ${incorrectPercentage}%</p>`;
+  resultContainer.innerHTML += `<p id="correctCounter">  ${score} / ${totalQuestions}questions</p>`;
+  resultContainer.innerHTML += `<p id="wrongCounter">  ${
+    totalQuestions - score
+  } / ${totalQuestions} questiions</p>`;
 }
 
 window.onload = function () {
