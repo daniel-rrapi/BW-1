@@ -146,14 +146,13 @@ function displayQuestion() {
     return;
   }
   let allAnswers = [...question.incorrect_answers, question.correct_answer];
-  shuffleArray(allAnswers); // Questo mescola l'ordine delle risposte
+  shuffleArray(allAnswers);
 
   questionIndexElement.innerHTML = `questions ${
     currentQuestionIndex + 1
   } <span>/ ${questions.length}</span>`;
   questionContainer.innerHTML = `<p>${question.question}</p>`;
 
-  // Utilizziamo allAnswers (risposte mescolate) per visualizzare le risposte
   allAnswers.forEach((answer) => {
     questionContainer.innerHTML += `
       <input type="radio" name="answer" value="${answer}" id="${answer}">
@@ -228,8 +227,7 @@ function calculateAndDisplayResults() {
     100
   ).toFixed(1);
 
-  // Calcolo dell'offset in base alla percentuale di risposte corrette
-  const circleLength = 2 * Math.PI * 180; // 2*pi*raggio del cerchio
+  const circleLength = 2 * Math.PI * 180;
   const offset = circleLength * (1 - score / totalQuestions);
 
   let resultSVG;
