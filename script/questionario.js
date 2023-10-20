@@ -148,9 +148,9 @@ function displayQuestion() {
   let allAnswers = [...question.incorrect_answers, question.correct_answer];
   shuffleArray(allAnswers); // Questo mescola l'ordine delle risposte
 
-  questionIndexElement.textContent = `questions ${currentQuestionIndex + 1} / ${
-    questions.length
-  }`;
+  questionIndexElement.innerHTML = `questions ${
+    currentQuestionIndex + 1
+  } <span>/ ${questions.length}</span>`;
   questionContainer.innerHTML = `<p>${question.question}</p>`;
 
   // Utilizziamo allAnswers (risposte mescolate) per visualizzare le risposte
@@ -251,7 +251,7 @@ function calculateAndDisplayResults() {
     </svg>
     <button onclick="window.location.href='feedback.html'">Rate Us</button>
 
-    `
+    `;
   } else {
     resultSVG = `
    <h1>Results</h1>
@@ -270,7 +270,7 @@ function calculateAndDisplayResults() {
     </svg>
     <button onclick="window.location.href='feedback.html'">Rate Us</button>
 
-    `
+    `;
   }
 
   resultContainer.innerHTML = resultSVG;
