@@ -133,15 +133,18 @@ function displayQuestion() {
     calculateAndDisplayResults();
     return;
   }
+  let allAnswers = [...question.incorrect_answers, question.correct_answer];
+  shuffleArray(allAnswers); // Questo mescola l'ordine delle risposte
 
   questionIndexElement.textContent = `questions ${currentQuestionIndex + 1} / ${questions.length}`;
   questionContainer.innerHTML = `<p>${question.question}</p>`;
-  question.incorrect_answers.concat(question.correct_answer).forEach((answer) => {
+
+  // Utilizziamo allAnswers (risposte mescolate) per visualizzare le risposte
+  allAnswers.forEach((answer) => {
     questionContainer.innerHTML += `
       <input type="radio" name="answer" value="${answer}" id="${answer}">
       <label for="${answer}">${answer}</label>`;
   });
-
   questionContainer.innerHTML += `
     <button id="next-button" onclick="nextQuestion()" style="visibility: hidden;">Domanda successiva</button>`;
 
@@ -204,7 +207,7 @@ function calculateAndDisplayResults() {
   const incorrectPercentage = (((totalQuestions - score) / totalQuestions) * 100).toFixed(1);
 
   // Calcolo dell'offset in base alla percentuale di risposte corrette
-  const circleLength = 2 * Math.PI * 40; // 2*pi*raggio del cerchio
+  const circleLength = 2 * Math.PI * 90; // 2*pi*raggio del cerchio
   const offset = circleLength * (1 - score / totalQuestions);
 
   let resultSVG;
@@ -213,8 +216,8 @@ function calculateAndDisplayResults() {
     <h1>Results</h1>
    <h2>The summary of your answers:</h2>
     <svg width="200" height="200">
-      <circle cx="100" cy="100" r="90" stroke="lightgray" stroke-width="50" fill="none" />
-      <circle cx="100" cy="100" r="90" stroke="green" stroke-width="50" fill="none" 
+      <circle cx="100" cy="100" r="90" stroke="lightgray" stroke-width="20" fill="none" />
+      <circle cx="100" cy="100" r="90" stroke="green" stroke-width="20" fill="none" 
         stroke-dasharray="${circleLength}" 
         stroke-dashoffset="${offset}" />
       <text x="100" y="70" font-family="Arial" font-size="16" fill="black" text-anchor="middle">Congratulazioni!</text>
@@ -231,8 +234,8 @@ function calculateAndDisplayResults() {
    <h2>The summary of your answers:</h2>
 
     <svg width="200" height="200">
-      <circle cx="100" cy="100" r="90" stroke="lightgray" stroke-width="50" fill="none" />
-      <circle cx="100" cy="100" r="90" stroke="red" stroke-width="50" fill="none" 
+      <circle cx="100" cy="100" r="90" stroke="lightgray" stroke-width="20" fill="none" />
+      <circle cx="100" cy="100" r="90" stroke="red" stroke-width="20" fill="none" 
         stroke-dasharray="${circleLength}" 
         stroke-dashoffset="${offset}" />
       <text x="100" y="70" font-family="Arial" font-size="16" fill="black" text-anchor="middle">Ci dispiace molto,</text>
@@ -254,4 +257,6 @@ function calculateAndDisplayResults() {
   resultContainer.innerHTML += `<p>  ${totalQuestions - score} / ${totalQuestions} questiions</p>`;
 }
 
-displayQuestion();
+window.onload = function () {
+  displayQuestion();
+};
