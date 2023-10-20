@@ -277,10 +277,10 @@ function calculateAndDisplayResults() {
 
   resultContainer.innerHTML += `<p id="correct"> correct ${correctPercentage}%</p>`;
   resultContainer.innerHTML += `<p id="wrong"> wrong ${incorrectPercentage}%</p>`;
-  resultContainer.innerHTML += `<p id="correctCounter">  ${score} / ${totalQuestions}questions</p>`;
+  resultContainer.innerHTML += `<p id="correctCounter">  ${score} / ${totalQuestions} questions</p>`;
   resultContainer.innerHTML += `<p id="wrongCounter">  ${
     totalQuestions - score
-  } / ${totalQuestions} questiions</p>`;
+  } / ${totalQuestions} questions</p>`;
 }
 
 window.onload = function () {
